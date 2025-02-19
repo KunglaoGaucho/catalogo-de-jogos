@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <title>{% block title %}{% endblock %}</title>
+  <style>
+    body {
+        font-family: 'Open Sans', sans-serif;
+        background-color: #f7f7f7;
+        color: #333;
+        margin: 0;
+        padding: 0;
+
+        /* Configurações para footer fixo */
+        display: flex;
+        min-height: 100vh;
+        flex-direction: column;
+    }
+
+    main {
+        flex: 1;
+    }
+
+    header {
+        background-color: #0096c7;
+        color: #fff;
+        text-align: center;
+    }
+
+    footer {
+        background-color: #464444;
+        color: #ede6e6;
+        padding: 20px;
+        text-align: center;
+    }
+
+    nav {
+        background-color: #55c585;
+        color: #fff;
+        height: 50px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    nav ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+    }
+
+    nav ul li {
+        margin: 0 10px;
+    }
+
+    nav ul li a {
+        color: #fff;
+        text-decoration: none;
+        font-size: 16px;
+        padding: 15px;
+        transition: all 0.3s ease;
+    }
+
+    nav ul li a:hover {
+        background-color: #55c585;
+        text-decoration: none;
+
+    }
+
+    nav ul li.active a {
+        background-color: #666;
+
+    }
+
+    nav ul li.active a:hover {
+        background-color: #999;
+        text-decoration: none;
+
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <ul>
+      {% if user.is_authenticated %}                                           <!-- DTL para dar boas vindas ao usuário quando ele logar -->
+        <li>Olá, {{ user.username }}</li>
+        <li><a href="{% url 'new_game' %}">Cadastrar jogo</a></li>
+      {% endif %}
+      {% if not user.is_authenticated %}
+        <li><a href="{% url 'register' %}">Cadastre-se</a></li>
+        <li><a href="{% url 'login' %}">Login</a></li>
+      {% endif %}
+
+      <li><a href="{% url 'games_list' %}">Jogos</a></li>
+
+      {% if user.is_authenticated %} 
+        <li><a href="{% url 'logout' %}"> Sair </a></li>
+      {% endif %}
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    {% block content %}
+    {% endblock %}
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Corinthians Campeão Paulista</p>
+  </footer>
+</body>
+</html>
