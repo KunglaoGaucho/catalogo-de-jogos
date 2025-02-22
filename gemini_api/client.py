@@ -4,7 +4,7 @@ import os
 
 def game_bio_generator(game_name):
     # Defina a chave diretamente no código
-    API_KEY = os.getenv('API_KEY')
+    API_KEY = os.getenv('API_KEY')                        # API_KEY: Foi definida como variável de ambiente
     client = genai.Client(api_key=API_KEY)
     prompt = f"Gere uma breve descrição para o jogo: {game_name}. Resuma em apenas uma ou duas frases no máximo"
 
