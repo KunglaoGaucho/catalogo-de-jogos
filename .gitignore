@@ -1,3 +1,4 @@
 mvenv 
 db.sqlite3
 media
+.env

@@ -1,8 +1,19 @@
 from google import genai
 from google.genai import types
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 def game_bio_generator(game_name):
-    client = genai.Client(api_key="AIzaSyD_Jbyv91kMtaGmtjKvp2Co4mKFFdSi8sY")
+    API_KEY = os.getenv("GOOGLE_API_KEY")
+
+    # Verifica se a chave API foi encontrada
+    if not API_KEY:
+        raise ValueError("A chave API não foi encontrada. Defina a variável GOOGLE_API_KEY no .env")
+
+
+    client = genai.Client(api_key=API_KEY)
     prompt = f"Gere uma breve descrição para o jogo: {game_name}. Resuma em apenas uma ou duas frases no máximo"
 
     response = client.models.generate_content(
