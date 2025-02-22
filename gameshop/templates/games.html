@@ -21,6 +21,9 @@
       padding: 15px;
       box-sizing: border-box;
       max-width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
 
     .game-card:hover {
@@ -58,8 +61,8 @@
       }
 
       .game-card {
-        width: 90%; /* Garante que o card não ocupe toda a largura */
         margin: 0 auto;
+        width: 100%; /* Garante que os cards fiquem com largura adequada */
       }
     }
 
@@ -147,7 +150,7 @@
   </style>
 
   <form method="GET" action="{% url 'games_list' %}">
-    <input type="text" name="search" placeholder="Buscar jogo...">
+    <input type="text" name="search" placeholder="Buscar carro...">
     <button type="submit">Buscar</button>
   </form>
 
