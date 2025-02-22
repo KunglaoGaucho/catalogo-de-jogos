@@ -48,9 +48,33 @@
       margin-bottom: 10px;
     }
 
+    /* Media query para telas pequenas */
     @media (max-width: 768px) {
-      .car-grid {
+      .game-grid {
         grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .game-grid {
+        grid-template-columns: 1fr;
+        padding: 10px;
+      }
+
+      .game-card {
+        margin-bottom: 20px;
+      }
+      
+      .game-card h3 {
+        font-size: 18px;
+      }
+
+      .game-card h2 {
+        font-size: 1.2rem;
+      }
+
+      .game-card p {
+        font-size: 0.9rem;
       }
     }
 
@@ -70,6 +94,7 @@
         border-radius: 4px;
         margin-right: 10px;
         transition: border-bottom-color 0.3s ease-in-out;
+        width: 250px;
     }
 
     input[type="text"]:focus {
@@ -101,7 +126,12 @@
     a:hover {
       color: #04583e;
       text-decoration: none;
+    }
 
+    .no-results, .no-photo {
+      font-size: 18px;
+      text-align: center;
+      margin-top: 20px;
     }
   </style>
 
