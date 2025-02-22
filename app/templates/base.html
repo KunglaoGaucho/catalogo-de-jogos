@@ -40,9 +40,6 @@
         background-color: #55c585;
         color: #fff;
         height: 50px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
     }
 
     nav ul {
@@ -67,40 +64,81 @@
     nav ul li a:hover {
         background-color: #55c585;
         text-decoration: none;
-
     }
 
     nav ul li.active a {
         background-color: #666;
-
     }
 
     nav ul li.active a:hover {
         background-color: #999;
         text-decoration: none;
-
     }
+
+    /* Responsividade para o menu */
+    @media (max-width: 768px) {
+        nav ul {
+            flex-direction: column;
+            display: none;
+        }
+
+        nav ul.show {
+            display: flex;
+        }
+
+        nav ul li {
+            margin: 10px 0;
+        }
+
+        .navbar-toggler {
+            display: block;
+            background-color: #fff;
+            border: none;
+            padding: 10px;
+        }
+
+        .navbar-toggler-icon {
+            color: #0096c7;
+        }
+    }
+
   </style>
 </head>
 <body>
   <header>
-    <nav>
-      <ul>
-      {% if user.is_authenticated %}                                           <!-- DTL para dar boas vindas ao usuário quando ele logar -->
-        <li>Olá, {{ user.username }}</li>
-        <li><a href="{% url 'new_game' %}">Cadastrar jogo</a></li>
-      {% endif %}
-      {% if not user.is_authenticated %}
-        <li><a href="{% url 'register' %}">Cadastre-se</a></li>
-        <li><a href="{% url 'login' %}">Login</a></li>
-      {% endif %}
-
-      <li><a href="{% url 'games_list' %}">Jogos</a></li>
-
-      {% if user.is_authenticated %} 
-        <li><a href="{% url 'logout' %}"> Sair </a></li>
-      {% endif %}
-      </ul>
+    <nav class="navbar navbar-expand-lg navbar-light">
+      <a class="navbar-brand" href="#">Logo</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          {% if user.is_authenticated %}
+            <li class="nav-item">
+              <a class="nav-link" href="#">Olá, {{ user.username }}</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'new_game' %}">Cadastrar jogo</a>
+            </li>
+          {% endif %}
+          {% if not user.is_authenticated %}
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'register' %}">Cadastre-se</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'login' %}">Login</a>
+            </li>
+          {% endif %}
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'games_list' %}">Jogos</a>
+          </li>
+          {% if user.is_authenticated %}
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'logout' %}">Sair</a>
+            </li>
+          {% endif %}
+        </ul>
+      </div>
     </nav>
   </header>
 
@@ -112,5 +150,9 @@
   <footer>
     <p>&copy; 2025 Corinthians Campeão Paulista</p>
   </footer>
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8iRkNrcINJznxC6bUewF8o3knLR5Uqk16h78r4xtXwgl0PH+eZKnQxkPcdqkGTjF" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js" integrity="sha384-HkNqEWh6s7AKy7Tk2VUBz+fO8peh1n6XlLgP29cVVq8PEndwm38l2bhXWzv7tiP1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-U6p5U6fhsOGP6f5pjo5LOzFZ5TjxMTyV6d3XgG0V6FYQQtntoQ17y0wkhLQhfyf6" crossorigin="anonymous"></script>
 </body>
 </html>
