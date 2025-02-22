@@ -18,6 +18,8 @@
       overflow: hidden;
       text-align: center;
       transition: all 0.3s ease;
+      padding: 15px;
+      box-sizing: border-box;
     }
 
     .game-card:hover {
@@ -48,23 +50,25 @@
       margin-bottom: 10px;
     }
 
-    /* Media query para telas pequenas */
+    /* Media query para telas médias */
     @media (max-width: 768px) {
       .game-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(2, 1fr); /* 2 colunas */
       }
     }
 
+    /* Media query para telas pequenas (celulares) */
     @media (max-width: 480px) {
       .game-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr; /* 1 coluna */
         padding: 10px;
       }
 
       .game-card {
         margin-bottom: 20px;
+        padding: 10px; /* Menos padding nas telas pequenas */
       }
-      
+
       .game-card h3 {
         font-size: 18px;
       }
@@ -136,7 +140,7 @@
   </style>
 
   <form method="GET" action="{% url 'games_list' %}">
-    <input type="text" name="search" placeholder="Buscar carro...">
+    <input type="text" name="search" placeholder="Buscar jogo...">
     <button type="submit">Buscar</button>
   </form>
 
