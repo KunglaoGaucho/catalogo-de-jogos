@@ -20,6 +20,7 @@
       transition: all 0.3s ease;
       padding: 15px;
       box-sizing: border-box;
+      max-width: 100%;
     }
 
     .game-card:hover {
@@ -55,6 +56,11 @@
       .game-grid {
         grid-template-columns: repeat(2, 1fr); /* 2 colunas */
       }
+
+      .game-card {
+        width: 90%; /* Garante que o card não ocupe toda a largura */
+        margin: 0 auto;
+      }
     }
 
     /* Media query para telas pequenas (celulares) */
@@ -67,6 +73,7 @@
       .game-card {
         margin-bottom: 20px;
         padding: 10px; /* Menos padding nas telas pequenas */
+        width: 100%; /* Garante que o card ocupe toda a largura */
       }
 
       .game-card h3 {
