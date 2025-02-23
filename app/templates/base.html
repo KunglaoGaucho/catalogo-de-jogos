@@ -47,6 +47,7 @@
         margin: 0;
         padding: 0;
         display: flex;
+        flex-wrap: wrap; /* Garante que os itens se ajustem em telas menores */
     }
 
     nav ul li {
@@ -75,30 +76,15 @@
         text-decoration: none;
     }
 
-    /* Responsividade para o menu */
+    /* Responsividade para telas menores */
     @media (max-width: 768px) {
         nav ul {
-            flex-direction: column;
-            display: none;
-        }
-
-        nav ul.show {
-            display: flex;
+            flex-direction: column; /* Coloca os itens um abaixo do outro em telas pequenas */
+            align-items: center; /* Centraliza os itens */
         }
 
         nav ul li {
-            margin: 10px 0;
-        }
-
-        .navbar-toggler {
-            display: block;
-            background-color: #fff;
-            border: none;
-            padding: 10px;
-        }
-
-        .navbar-toggler-icon {
-            color: #0096c7;
+            margin: 10px 0; /* Distância entre os itens */
         }
     }
 
@@ -107,10 +93,7 @@
 <body>
   <header>
     <nav class="navbar navbar-expand-lg navbar-light">
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
+      <div class="navbar-nav">
         <ul class="navbar-nav">
           {% if user.is_authenticated %}
             <li class="nav-item">
