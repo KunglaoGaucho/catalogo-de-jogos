@@ -12,8 +12,6 @@
         color: #333;
         margin: 0;
         padding: 0;
-
-        /* Configurações para footer fixo */
         display: flex;
         min-height: 100vh;
         flex-direction: column;
@@ -39,7 +37,6 @@
     nav {
         background-color: #55c585;
         color: #fff;
-        height: 50px;
     }
 
     nav ul {
@@ -47,8 +44,8 @@
         margin: 0;
         padding: 0;
         display: flex;
-        justify-content: space-around; /* Distribui os itens uniformemente */
-        align-items: center; /* Centraliza os itens verticalmente */
+        justify-content: space-between; /* Para manter os itens em uma linha */
+        align-items: center;
     }
 
     nav ul li {
@@ -56,7 +53,7 @@
     }
 
     nav ul li a {
-        color: #fff !important; /* Cor dos itens da navbar em branco */
+        color: #fff !important;
         text-decoration: none;
         font-size: 16px;
         padding: 15px;
@@ -77,16 +74,19 @@
         text-decoration: none;
     }
 
-    /* Responsividade para telas menores */
+    /* Responsividade ajustada para telas menores */
     @media (max-width: 768px) {
         nav ul {
-            flex-direction: column; /* Coloca os itens um abaixo do outro em telas pequenas */
-            align-items: center; /* Centraliza os itens */
-            display: block;
+            flex-direction: column;  /* Empilha os itens em telas menores */
+            align-items: flex-start; /* Alinha os itens à esquerda */
         }
 
         nav ul li {
-            margin: 10px 0; /* Distância entre os itens */
+            margin: 5px 0; /* Menor margem entre os itens */
+        }
+
+        nav ul li a {
+            padding: 10px 15px; /* Ajuste de padding para telas menores */
         }
     }
 
@@ -95,7 +95,7 @@
 <body>
   <header>
     <nav class="navbar navbar-expand-lg navbar-light">
-      <div class="navbar-nav">
+      <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
           {% if user.is_authenticated %}
             <li class="nav-item">
