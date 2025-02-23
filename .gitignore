@@ -1,0 +1,6 @@
+mvenv 
+db.sqlite3
+media
+.env
+__pycache__/
+*.pyc

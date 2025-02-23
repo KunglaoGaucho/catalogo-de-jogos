@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <title>{% block title %}{% endblock %}</title>
+  <style>
+    body {
+        font-family: 'Open Sans', sans-serif;
+        background-color: #f7f7f7;
+        color: #333;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        min-height: 100vh;
+        flex-direction: column;
+    }
+
+    main {
+        flex: 1;
+    }
+
+    header {
+        background-color: #0096c7;
+        color: #fff;
+        text-align: center;
+    }
+
+    footer {
+        background-color: #464444;
+        color: #ede6e6;
+        padding: 20px;
+        text-align: center;
+    }
+
+    nav {
+        background-color: #55c585;
+        color: #fff;
+    }
+
+    nav ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    nav ul li {
+        margin: 0 10px;
+    }
+
+    nav ul li a {
+        color: #fff !important;
+        text-decoration: none;
+        font-size: 16px;
+        padding: 15px;
+        transition: all 0.3s ease;
+    }
+
+    nav ul li a:hover {
+        background-color: #55c585;
+        text-decoration: none;
+    }
+
+    nav ul li.active a {
+        background-color: #666;
+    }
+
+    nav ul li.active a:hover {
+        background-color: #999;
+        text-decoration: none;
+    }
+
+    /* Responsividade para telas menores */
+    @media (max-width: 768px) {
+        nav ul {
+            justify-content: space-around;  /* Ajuste para distribuição */
+        }
+
+        nav ul li {
+            margin: 0 5px; /* Menor margem entre os itens */
+        }
+
+        nav ul li a {
+            padding: 10px 15px; /* Ajuste de padding para telas menores */
+        }
+    }
+
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-light">
+      <div class="navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          {% if user.is_authenticated %}
+            <li class="nav-item">
+              <a class="nav-link" href="#">Olá, {{ user.username }}</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'new_game' %}">Cadastrar jogo</a>
+            </li>
+          {% endif %}
+          {% if not user.is_authenticated %}
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'register' %}">Cadastre-se</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'login' %}">Login</a>
+            </li>
+          {% endif %}
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'games_list' %}">Jogos</a>
+          </li>
+          {% if user.is_authenticated %}
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'logout' %}">Sair</a>
+            </li>
+          {% endif %}
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    {% block content %}
+    {% endblock %}
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Corinthians Campeão Paulista</p>
+  </footer>
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8iRkNrcINJznxC6bUewF8o3knLR5Uqk16h78r4xtXwgl0PH+eZKnQxkPcdqkGTjF" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js" integrity="sha384-HkNqEWh6s7AKy7Tk2VUBz+fO8peh1n6XlLgP29cVVq8PEndwm38l2bhXWzv7tiP1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-U6p5U6fhsOGP6f5pjo5LOzFZ5TjxMTyV6d3XgG0V6FYQQtntoQ17y0wkhLQhfyf6" crossorigin="anonymous"></script>
+</body>
+</html>
