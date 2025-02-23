@@ -47,7 +47,8 @@
         margin: 0;
         padding: 0;
         display: flex;
-        flex-wrap: wrap; /* Garante que os itens se ajustem em telas menores */
+        justify-content: space-around; /* Distribui os itens uniformemente */
+        align-items: center; /* Centraliza os itens verticalmente */
     }
 
     nav ul li {
@@ -81,6 +82,7 @@
         nav ul {
             flex-direction: column; /* Coloca os itens um abaixo do outro em telas pequenas */
             align-items: center; /* Centraliza os itens */
+            display: block;
         }
 
         nav ul li {
