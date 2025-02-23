@@ -44,7 +44,7 @@
         margin: 0;
         padding: 0;
         display: flex;
-        justify-content: space-between; /* Para manter os itens em uma linha */
+        justify-content: space-between;
         align-items: center;
     }
 
@@ -74,15 +74,14 @@
         text-decoration: none;
     }
 
-    /* Responsividade ajustada para telas menores */
+    /* Responsividade para telas menores */
     @media (max-width: 768px) {
         nav ul {
-            flex-direction: column;  /* Empilha os itens em telas menores */
-            align-items: flex-start; /* Alinha os itens à esquerda */
+            justify-content: space-around;  /* Ajuste para distribuição */
         }
 
         nav ul li {
-            margin: 5px 0; /* Menor margem entre os itens */
+            margin: 0 5px; /* Menor margem entre os itens */
         }
 
         nav ul li a {
@@ -95,7 +94,7 @@
 <body>
   <header>
     <nav class="navbar navbar-expand-lg navbar-light">
-      <div class="collapse navbar-collapse" id="navbarNav">
+      <div class="navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
           {% if user.is_authenticated %}
             <li class="nav-item">
