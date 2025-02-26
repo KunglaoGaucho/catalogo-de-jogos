@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 
 from pathlib import Path
 import os
+import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -78,14 +79,16 @@ WSGI_APPLICATION = 'app.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'gameshop',
         'USER': 'postgres',
-        'PASSWORD': 'kiko2025',
-        'HOST': 'localhost',
+        'PASSWORD': 'postgres',
+        'HOST': 'gameshop_db',
         'PORT': '5432'
+        
     }
-}
+    }
+
 
 
 # Password validation
