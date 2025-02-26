@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+
 {% block content %}
     <h2 class="mb-4">Cadastrar Jogo</h2>
     <form method="post" enctype="multipart/form-data">
@@ -9,7 +10,11 @@
             {% for field in form %}
                 <div class="mb-3">
                     <label for="{{ field.id_for_label }}" class="form-label">{{ field.label }}</label>
-                    {{ field }}
+                    {% if field.name == 'bio' %}
+                        <p class="form-control-static">Gerada automaticamente por IA</p>
+                    {% else %}
+                        {{ field }}
+                    {% endif %}
                     <div class="text-danger">
                         {{ field.errors }}
                     </div>
